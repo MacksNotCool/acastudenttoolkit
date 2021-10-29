@@ -9,7 +9,7 @@
         "type": "image/png"
       }
     ],
-    "name": "",
+    "name": "ACA Toolkit",
     "short_name": "ACA Toolkit",
-    "start_url": "/pwa-examples/a2hs/index.html"
+    "start_url": "/acastudenttoolkit/acstud/index.html"
   }
