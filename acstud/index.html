@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>A</title>
+        <link rel="manifest" href="manifest.webmanifest">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -108,5 +109,34 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ut similique mollitia deserunt! Quibusdam minus officiis, autem ullam cupiditate dolore cumque amet eaque optio quod, eius asperiores perspiciatis veritatis soluta.</p>
             
             </div>
+            <script>
+                let deferredPrompt;
+                const addBtn = document.querySelector('.add-button');
+                addBtn.style.display = 'none';
+                window.addEventListener('beforeinstallprompt', (e) => {
+                // Prevent Chrome 67 and earlier from automatically showing the prompt
+                e.preventDefault();
+                // Stash the event so it can be triggered later.
+                deferredPrompt = e;
+                // Update UI to notify the user they can add to home screen
+                addBtn.style.display = 'block';
+
+                addBtn.addEventListener('click', (e) => {
+                    // hide our user interface that shows our A2HS button
+                    addBtn.style.display = 'none';
+                    // Show the prompt
+                    deferredPrompt.prompt();
+                    // Wait for the user to respond to the prompt
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                        } else {
+                        console.log('User dismissed the A2HS prompt');
+                        }
+                        deferredPrompt = null;
+                    });
+                });
+                });
+            </script>
     </body>
 </html>
