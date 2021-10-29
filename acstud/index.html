@@ -107,12 +107,12 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ut similique mollitia deserunt! Quibusdam minus officiis, autem ullam cupiditate dolore cumque amet eaque optio quod, eius asperiores perspiciatis veritatis soluta.</p>
                 <h2>Eagle news #1</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ut similique mollitia deserunt! Quibusdam minus officiis, autem ullam cupiditate dolore cumque amet eaque optio quod, eius asperiores perspiciatis veritatis soluta.</p>
-                <button class="add-button">Install</button>
+                <button id="addBtn">Install</button>
             </div>
             
             <script>
                 let deferredPrompt;
-                const addBtn = document.querySelector('.add-button');
+                
                 addBtn.style.display = 'none';
                 window.addEventListener('beforeinstallprompt', (e) => {
                 // Prevent Chrome 67 and earlier from automatically showing the prompt
